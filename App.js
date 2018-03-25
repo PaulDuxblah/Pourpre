@@ -5,7 +5,8 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Super Mario</Text>
+        <Text>J'aime tuer des gens</Text>
+        <Text>La mort c'est cool</Text>
       </View>
     );
   }
