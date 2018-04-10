@@ -3,7 +3,8 @@ import {Text, View, Image, TouchableHighlight} from 'react-native'
 import { StackNavigator } from 'react-navigation'
 
 //GENERAL COMPONENTS
-import BackgroundDash from '../BackgroundDashboard'
+import PourpreComponent from '../PourpreComponent';
+import BackgroundDash from '../BackgroundDashboard';
 
 
 //COMPONENTS
@@ -17,7 +18,7 @@ import Agenda from '../agenda/Agenda'
 import style from '../../style'
 
 
-class Dashboard extends Component {
+class Dashboard extends PourpreComponent {
 
   //ICON
     static navigationOptions = {

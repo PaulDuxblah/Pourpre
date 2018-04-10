@@ -8,14 +8,13 @@ import logo from '../images/pourpre_logo.png';
 export default class Login extends PourpreComponent {
   constructor(props) {
     super(props);
-    // this.setState({user: null});
     if (this.isUserLoaded()) {
       this.props.navigation.navigate('Dashboard');
     }
   }
 
   fetchLogin = (pseudo, password) => {
-    fetch('https://2e5bbaf4.ngrok.io/ecv/Pourpre-api/api/user/login/pseudo=' + pseudo + '/password=' + password)
+    fetch(this.apiUrl + 'user/login/pseudo=' + pseudo + '/password=' + password)
     .then((response) => response.json())
     .then((responseJson) => {
       try {
