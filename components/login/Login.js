@@ -31,31 +31,31 @@ export default class Login extends PourpreComponent {
   render() {
     return (
       <BackgroundOne>
-       <View style={styles.loginContainer}>
+        <View style={styles.loginContainer}>
           <Image
             resizeMode="contain"
             style={styles.logo}
             source={logo}
           />
           <LoginForm onLoginClick={this.fetchLogin} />
-       </View>
+        </View>
       </BackgroundOne>
     )
   }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    loginContainer:{
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      justifyContent:'center'
-    },
-    logo:{
-      height: 100,
-      width: 200
-    }
+  container: {
+    flex: 1,
+  },
+  loginContainer:{
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent:'center'
+  },
+  logo:{
+    height: 100,
+    width: 200
+  }
 })

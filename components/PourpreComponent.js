@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { AsyncStorage } from 'react-native'
+import React, { Component } from 'react';
+import { AsyncStorage } from 'react-native';
 
 export default class Login extends Component {
   apiUrl = "https://2e5bbaf4.ngrok.io/ecv/Pourpre-api/api/";
 
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       user: {}
