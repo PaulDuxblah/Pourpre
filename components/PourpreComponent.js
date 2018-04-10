@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AsyncStorage } from 'react-native';
 
-export default class Login extends Component {
+export default class PourpreComponent extends Component {
   apiUrl = "https://2e5bbaf4.ngrok.io/ecv/Pourpre-api/api/";
 
   constructor (props) {
