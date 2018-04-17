@@ -9,7 +9,7 @@ export default class Geolocalisation extends Component {
         location: { coords: {latitude: 0, longitude: 0}},
       };
     
-      componentWillMount() {
+      componentDidMount() {
         Location.watchPositionAsync(GEOLOCATION_OPTIONS, this.locationChanged);
       }
     

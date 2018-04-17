@@ -85,8 +85,7 @@ export default {
       alignItems: 'flex-start'
     },
     dateReminder:{
-      textAlign: 'center',
-      margin: 5,
+      margin: 4
     },
     datetimeReminder:{
       textAlign: 'center',
