@@ -10,6 +10,7 @@ const pink = '#B319AB'
 const mainpurple = '#350D36'
 const blue = '#355C7C'
 const bluelight = '#169DC1'
+const black = '#000000'
 
 export default {
     container: {

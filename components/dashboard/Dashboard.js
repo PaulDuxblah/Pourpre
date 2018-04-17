@@ -47,7 +47,7 @@ class Dashboard extends PourpreComponent {
 
     return (
       <BackgroundDash>
-      <TopBlock user={this.state.user}/>
+      <TopBlock user={this.state.user} logout={this.logout} />
 
       <View style={style.activityBlock}>
         <Text style={[style.textGeneral, style.titleActivity]}>VOTRE PROCHAINE ACTIVITÉ</Text>

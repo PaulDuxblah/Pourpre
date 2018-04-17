@@ -1,20 +1,24 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image, ImageBackground, AsyncStorage } from 'react-native';
+import { Text, View, StyleSheet, Image, Button, ImageBackground, ActivityIndicator, AsyncStorage } from 'react-native';
 import LoginForm from './LoginForm';
 import BackgroundOne from '../BackgroundOne';
 import PourpreComponent from '../PourpreComponent';
 import logo from '../images/pourpre_logo.png';
 
+import style from '../../style';
+
 export default class Login extends PourpreComponent {
   constructor(props) {
     super(props);
+    this.state = {
+      goToRegister: this.props.goToRegister
+    };
   }
 
   componentDidUpdate(prevProps, prevState) {
     // TODO refresh user on app launch
     if (this.state.user) {
       // this.fetchUser(this.state.user.id, this.state.user.token);
-      this.props.navigation.navigate('Dashboard');
     }
   }
 
@@ -26,7 +30,6 @@ export default class Login extends PourpreComponent {
         AsyncStorage.setItem('user', JSON.stringify(responseJson))
         .then(() => {
           this.loadUser();
-          this.props.navigation.navigate('Dashboard');
         });
       } catch (error) {
         
@@ -35,6 +38,10 @@ export default class Login extends PourpreComponent {
   }
 
   render() {
+    if (!this.state.goToRegister) {
+      return (<ActivityIndicator size="large" color="white" />);
+    }
+
     return (
       <BackgroundOne>
         <View style={styles.loginContainer}>
@@ -44,6 +51,11 @@ export default class Login extends PourpreComponent {
             source={logo}
           />
           <LoginForm onLoginClick={this.fetchLogin} />
+
+          <Button 
+            onPress={this.state.goToRegister}
+            title="Je n'ai pas de compte"
+          />
         </View>
       </BackgroundOne>
     )

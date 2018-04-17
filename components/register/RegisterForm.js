@@ -1,27 +1,76 @@
-import React, { Component } from 'react'
-import { Text, View, TouchableOpacity, StyleSheet, StatusBar, Alert, Button, TextInput } from 'react-native'
+import React, { Component } from 'react';
+import { Text, View, TouchableOpacity, StyleSheet, StatusBar, Alert, Button, TextInput, Picker } from 'react-native';
+
+import registerStyle from './style';
 
 class RegisterForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pseudo: null,
+      gender: 'Homme',
+      password: null,
+      confirmPassword: null,
+    };
+  }
+
+  submitForm = () => {
+    this.props.onRegisterClick(this.state.pseudo, this.state.gender, this.state.password, this.state.confirmPassword);
+  }
+
+  handleChange = (stateName, value) => {
+    this.setState({
+      ...this.state, 
+      [stateName]: value
+    });
+  }
+
   render() {
+    const { pseudo, gender, password, confirmPassword } = this.state;
+    console.log(pseudo, gender, password, confirmPassword);
+
+    // TODO display errors
+    // TODO Do post user
     return (
       <View style={styles.container}>
         <TextInput style = {styles.input} 
-               autoCapitalize="none"  
-               autoCorrect={false}
-               placeholder='Psuedo'/>
-        <TextInput style = {styles.input} 
-               autoCapitalize="none"  
-               autoCorrect={false}
-               placeholder='Genre'/>
+          autoCapitalize="none"  
+          autoCorrect={false}
+          placeholder='Pseudo'
+          value={pseudo}
+          onChangeText={v => this.handleChange('pseudo', v)}
+        />
+
+        <Picker
+          selectedValue={gender}
+          style={{ height: 50, width: 100 }}
+          onValueChange={v => this.handleChange('gender', v)}
+          style={[registerStyle.picker]}
+        >
+          <Picker.Item label="Homme" value="Homme" />
+          <Picker.Item label="Femme" value="Femme" />
+        </Picker>
+
+        <TextInput style = {styles.input}
+          placeholder='Mot de passe' 
+          secureTextEntry
+          value={password}
+          onChangeText={v => this.handleChange('password', v)}
+        />
+
         <TextInput style = {styles.input}   
-              returnKeyType="go" 
-              placeholder='mot de passe' 
-              secureTextEntry/>
-        <Button style= {styles.buttonTex} title="S'ENGRISTRER" />
-        {/* <TouchableOpacity style={styles.buttonContainer}>
-                <Text style={styles.buttonText}>SE CONNECTER</Text>
-        
-        </TouchableOpacity> */}
+          returnKeyType="go" 
+          placeholder='Confirmer mot de passe' 
+          secureTextEntry
+          value={confirmPassword}
+          onChangeText={v => this.handleChange('confirmPassword', v)}
+        />
+
+        <Button 
+          style= {styles.buttonTex} 
+          title="S'ENRGISTRER"
+          onPress={this.submitForm} 
+        />
       </View>
     )
   }

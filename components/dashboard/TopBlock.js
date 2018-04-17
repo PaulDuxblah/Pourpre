@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import { Text, View, Image, StyleSheet, TouchableOpacity, TouchableHighlight } from 'react-native';
 
 //STYLESHEET
 import style from '../../style';
@@ -12,7 +12,7 @@ export default class TopBlock extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      user: props.user,
+      user: props.user
     }
   }
 
@@ -25,13 +25,20 @@ export default class TopBlock extends Component {
     }
   }
 
+  logout = () => {
+    this.props.logout();
+  }
+
   render() {
     const { user } = this.state;
 
     return (
       <View style={[style.block, style.dashBlock]}>
       <View style={style.row}>
-        <Image source={this.getAvatar(user.avatar)} style= {{width:90, height:90}}/>
+        <TouchableHighlight onPress={this.logout}>
+          <Image source={this.getAvatar(user.avatar)} style={{width:90, height:90}} />
+        </TouchableHighlight>
+
         <View style={style.nameBlock}>
           <Text style={[style.textGeneral, style.titleName]}>{'BONJOUR ' + this.props.user.pseudo + '!'.toUpperCase()}</Text>
           <Text style={[style.textGeneral, style.capacityText]}>{'Votre capacite'.toUpperCase()}</Text>

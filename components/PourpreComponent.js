@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { AsyncStorage } from 'react-native';
 
 export default class PourpreComponent extends Component {
-  apiUrl = "https://732f9887.ngrok.io/ecv/Pourpre-api/api/";
+  apiUrl = "https://49aeb8e4.ngrok.io/ecv/Pourpre-api/api/";
 
   constructor (props) {
     super(props);
@@ -20,6 +20,17 @@ export default class PourpreComponent extends Component {
       });
     } catch (error) {
       
+    }
+  }
+
+  logout = () => {
+    try {
+      AsyncStorage.removeItem('user')
+      .then(() => {
+        this.props.navigation.navigate('Login');
+      });
+    } catch (error) {
+
     }
   }
 

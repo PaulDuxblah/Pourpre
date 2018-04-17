@@ -43,7 +43,7 @@ class LoginForm extends Component {
           onChangeText={v => this.handleChange('password', v)}
           secureTextEntry
         />
-        <Button 
+        <Button
           onPress={this.submitForm} 
           style={styles.buttonText}
           title="SE CONNECTER"

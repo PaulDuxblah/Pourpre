@@ -1,24 +1,24 @@
 import React from 'react';
-import { StatusBar, View, StyleSheet } from 'react-native';
+import { StatusBar, View, StyleSheet, AsyncStorage } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 
-//COMPONENTS
+// COMPONENTS
+// Not logged
+import Login from './components/login/Login';
+import Register from './components/register/Register';
+
+// Logged
 import Dashboard from './components/dashboard/Dashboard';
 import Agenda from './components/agenda/Agenda';
-import Notification from './components/notification/Notification';
-import UserSearch from './components/usersearch/UserSearch';
 import Geolocalisation from './components/map/Geolocalisation';
-import Login from './components/login/Login';
-// import Register from './components/register/Register';
+// import Notification from './components/notification/Notification';
+// import UserSearch from './components/usersearch/UserSearch';
 
 const Tabs = TabNavigator(
   {
-    Login: { 
-      screen: Login 
-    },
-    Geolocalisation: { screen: Geolocalisation},
+    Dashboard: { screen: Dashboard },
     Agenda: { screen: Agenda },
-    Dashboard: { screen: Dashboard }
+    Geolocalisation: { screen: Geolocalisation },
   },
   {
     tabBarPosition: 'bottom',
@@ -35,13 +35,62 @@ const Tabs = TabNavigator(
 );
 
 export default class App extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      user: null
+    };
+    this.loadUser();
+  }
+
+  async loadUser () {
+    try {
+      AsyncStorage.getItem('user')
+      .then((value) => {
+        this.setState({ 'user': JSON.parse(value) });
+      });
+    } catch (error) {
+      
+    }
+  }
+
+  goToLogin = () => {
+    this.setState({
+      ...this.state,
+      register: false
+    });
+    this.forceUpdate();
+  }
+
+  goToRegister = () => {
+    this.setState({
+      ...this.state,
+      register: true
+    });
+    this.forceUpdate();
+  }
+
   render() {
+    if (this.state.user == null) {
+      return (
+        <View style= {{flex: 1}} >
+          <StatusBar hidden={true} />
+          {
+            this.state.register ?
+            <Register goToLogin={this.goToLogin}/>
+            :
+            <Login goToRegister={this.goToRegister}/>
+          }
+        </View>
+      )
+    }
+
     return (
-    <View style= {{flex: 1}} >
-      <StatusBar hidden={true} />
-      <Tabs/>
-    </View>
-    );
+      <View style= {{flex: 1}} >
+        <StatusBar hidden={true} />
+        <Tabs/>
+      </View>
+    )
   }
 }
 
