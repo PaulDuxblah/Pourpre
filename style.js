@@ -22,8 +22,14 @@ export default {
     },
 
     textGeneral: {
-      color: '#fff',
+      color: white,
       fontSize: 12,
+    },
+    textWhite: {
+      color: white
+    },
+    textFullWidth: {
+      width: '100%'
     },
     block:{
       paddingHorizontal: 20,
@@ -59,7 +65,8 @@ export default {
       paddingVertical: 18
     },
     reminderBlock:{
-      paddingVertical: 10
+      paddingVertical: 10,
+      height: 100
     },
     titleName:{
       fontSize: 22,
@@ -85,8 +92,7 @@ export default {
       alignItems: 'flex-start'
     },
     dateReminder:{
-      textAlign: 'center',
-      margin: 5,
+      margin: 4
     },
     datetimeReminder:{
       textAlign: 'center',
@@ -94,6 +100,9 @@ export default {
       color: '#169DC1',
       fontWeight: 'bold',
       height: 48
+    },
+    textAlignCenter:{
+      textAlign: 'center',
     },
     dateReminderMonth:{
       textAlign: 'center',
@@ -125,10 +134,6 @@ export default {
     badgeSubBlock:{
       alignItems: 'center',
       justifyContent: 'center'
-    },
-    badgeNumber:{
-      fontSize: 50,
-      color: white
     },
     badgeTitle:{
       color: lightgrey,

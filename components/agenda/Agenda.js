@@ -25,10 +25,10 @@ export default class AgendaView extends Component {
     return (
       <View style={{flex: 1}}>
 
-      {/* mon vue calender 
-      <CalendarView/> */}
+      {/* mon vue calender */}
+      <CalendarView/>
       <Agenda
-        items={this.state.items}
+        // items={this.state.items}
         loadItemsForMonth={this.loadItems.bind(this)}
         renderItem={this.renderItem.bind(this)}
         renderEmptyDate={this.renderEmptyDate.bind(this)}
