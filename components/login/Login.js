@@ -8,7 +8,12 @@ import logo from '../images/pourpre_logo.png';
 export default class Login extends PourpreComponent {
   constructor(props) {
     super(props);
-    if (this.isUserLoaded()) {
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // TODO refresh user on app launch
+    if (this.state.user) {
+      // this.fetchUser(this.state.user.id, this.state.user.token);
       this.props.navigation.navigate('Dashboard');
     }
   }
@@ -20,6 +25,7 @@ export default class Login extends PourpreComponent {
       try {
         AsyncStorage.setItem('user', JSON.stringify(responseJson))
         .then(() => {
+          this.loadUser();
           this.props.navigation.navigate('Dashboard');
         });
       } catch (error) {
