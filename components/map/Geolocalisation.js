@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Platform, Text, View, StyleSheet, TouchableOpacity, TouchableHighlight, Button } from 'react-native';
 import { Constants, Location, Permissions } from 'expo';
 import MapView, { Marker } from 'react-native-maps';
-import Info from './Info';
 const GEOLOCATION_OPTIONS = { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 };
 
 export default class Geolocalisation extends Component {

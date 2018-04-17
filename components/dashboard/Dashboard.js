@@ -14,7 +14,10 @@ import TopBlock from './TopBlock';
 import Agenda from '../agenda/Agenda';
 
 //STYLESHEET
-import style from '../../style';
+
+import common from '../../common'
+import style from '../../style'
+
 
 class Dashboard extends PourpreComponent {
   constructor(props) {
