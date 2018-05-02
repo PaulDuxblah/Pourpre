@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { AsyncStorage } from 'react-native';
 
 export default class PourpreComponent extends Component {
-  apiUrl = "https://732f9887.ngrok.io/ecv/Pourpre-api/api/";
+  apiUrl = "http://104.236.224.204/pourpre-api/api/";
 
   constructor (props) {
     super(props);
