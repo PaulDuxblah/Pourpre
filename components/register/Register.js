@@ -36,9 +36,12 @@ export default class Register extends PourpreComponent {
       return;
     }
 
+    console.log('ready to register');
+
     fetch(
       this.apiUrl + 'user', 
       {
+        method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
@@ -52,13 +55,14 @@ export default class Register extends PourpreComponent {
     )
     .then((response) => response.json())
     .then((responseJson) => {
+      console.log(responseJson);
       try {
         AsyncStorage.setItem('user', JSON.stringify(responseJson))
         .then(() => {
           this.loadUser();
         });
       } catch (error) {
-        
+        console.log(error);
       }
     });
   }

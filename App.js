@@ -72,6 +72,7 @@ export default class App extends React.Component {
 
   render() {
     if (this.state.user == null) {
+      console.log('no user');
       return (
         <View style= {{flex: 1}} >
           <StatusBar hidden={true} />
@@ -84,6 +85,7 @@ export default class App extends React.Component {
         </View>
       )
     }
+    console.log('user');
 
     return (
       <View style= {{flex: 1}} >

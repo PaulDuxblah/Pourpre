@@ -18,6 +18,7 @@ import style from '../../style';
 
 class Dashboard extends PourpreComponent {
   constructor(props) {
+    console.log('dashboard');
     super(props);
   }
 

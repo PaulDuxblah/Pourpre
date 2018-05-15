@@ -33,7 +33,7 @@ class RegisterForm extends Component {
     // TODO Do post user
     return (
       <View style={styles.container}>
-        <TextInput style = {styles.input} 
+        <TextInput style = {registerStyle.input} 
           autoCapitalize="none"  
           autoCorrect={false}
           placeholder='Pseudo'
@@ -51,14 +51,16 @@ class RegisterForm extends Component {
           <Picker.Item label="Femme" value="Femme" />
         </Picker>
 
-        <TextInput style = {styles.input}
+        <TextInput style = {registerStyle.input}
+          autoCapitalize="none"
           placeholder='Mot de passe' 
           secureTextEntry
           value={password}
           onChangeText={v => this.handleChange('password', v)}
         />
 
-        <TextInput style = {styles.input}   
+        <TextInput style = {registerStyle.input}   
+          autoCapitalize="none"
           returnKeyType="go" 
           placeholder='Confirmer mot de passe' 
           secureTextEntry
@@ -79,14 +81,6 @@ export default RegisterForm
 const styles = StyleSheet.create({
     container:{
         padding: 20
-    },
-    input:{
-        height: 40,
-        width:240,
-        backgroundColor: '#fff',
-        marginBottom: 10,
-        padding: 10,
-        color: '#fff'
     },
     buttonContainer:{
         backgroundColor: '#2980b6',
