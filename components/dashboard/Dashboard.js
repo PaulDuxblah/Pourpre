@@ -15,9 +15,9 @@ import Agenda from '../agenda/Agenda';
 
 //STYLESHEET
 
-import common from '../../common'
-import style from '../../style'
 
+import style from './style';
+import common from './../../common';
 
 class Dashboard extends PourpreComponent {
   constructor(props) {
@@ -56,7 +56,7 @@ class Dashboard extends PourpreComponent {
         <Text style={[style.textGeneral, style.titleActivity]}>VOTRE PROCHAINE ACTIVITÉ</Text>
 
         <View style={style.border}></View>
-        <View style={[style.row, style.reminderBlock]}>
+        <View style={[common.row, style.reminderBlock]}>
           {meetingsToShow.length > 0 ?
             <View>
               {meetingsToShow.map((meeting) => {

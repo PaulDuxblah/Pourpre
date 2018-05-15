@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Text, View, Image } from 'react-native'
 
 //STYLESHEET
-import style from '../../style'
+import common from '../../common'
+import style from './style'
 
 
 export default class ReminderActivity extends Component {

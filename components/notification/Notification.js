@@ -5,7 +5,8 @@ import { Text, View } from 'react-native'
 import BackgroundGeneral from '../BackgroundGeneral'
 
 //STYLESHEET
-import style from '../../style'
+import common from '../../common'
+import style from './style'
 
 export default class Notification extends Component {
 

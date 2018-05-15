@@ -3,7 +3,8 @@ import { Text, View, Image, TouchableOpacity } from 'react-native'
 
 
 //STYLESHEET
-import style from '../../style'
+import common from '../../common'
+import style from './style'
 
 
 export default class UserProfile extends Component {

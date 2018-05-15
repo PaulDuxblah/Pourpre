@@ -6,7 +6,8 @@ import { StackNavigator } from 'react-navigation'
 import BackgroundGeneral from '../BackgroundGeneral'
 import UserProfile from './UserProfile'
 //STYLESHEET
-import style from '../../style'
+import common from '../../common'
+import style from './style'
 
 
 
