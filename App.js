@@ -96,5 +96,5 @@ export default class App extends React.Component {
   }
 }
 
-//Hide this F**k warning info ^^
+//Hide the warning info
 console.disableYellowBox = true; 

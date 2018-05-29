@@ -24,16 +24,14 @@ export default class Login extends PourpreComponent {
 
   fetchLogin = (pseudo, password) => {
     console.log('fetchLogin');
-    console.log(this.apiUrl + 'user/login/pseudo=' + pseudo + '/password=' + password);
     fetch(this.apiUrl + 'user/login/pseudo=' + pseudo + '/password=' + password)
     .then((response) => response.json())
     .then((responseJson) => {
-      console.log('fetchLogin success');
-      console.log(responseJson);
       try {
+        console.log('success fetchLogin');
         AsyncStorage.setItem('user', JSON.stringify(responseJson))
         .then(() => {
-          console.log('success');
+          console.log('success AsyncStorage fetchLogin');
           this.loadUser();
         });
       } catch (error) {

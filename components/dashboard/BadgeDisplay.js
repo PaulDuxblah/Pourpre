@@ -16,14 +16,12 @@ export default class BadgeDisplay extends Component {
 
   getSize = (integer) => {
     return 50;
-    console.log(integer);
     const string = integer.toString();
     return (45 + (5 * string.length)) / string.length;
   }
 
   render() {
     const { donations, escorts, sponsorships } = this.state;
-    console.log(donations, escorts, sponsorships);
 
     return (
       <View style={[style.row, style.badgeBlock]}>
