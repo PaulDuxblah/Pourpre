@@ -39,21 +39,24 @@ export default class Register extends PourpreComponent {
     console.log('ready to register');
 
     fetch(
-      this.apiUrl + 'user', 
+      this.apiUrl + 'user/', 
       {
         method: 'POST',
         headers: {
-          Accept: 'application/json',
+          'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           pseudo: pseudo,
           gender: gender,
           password: password
-        })
+        })  
       }
     )
-    .then((response) => response.json())
+    .then((response) =>{
+      console.log(response);
+      return response.json();
+    })
     .then((responseJson) => {
       console.log('register success');
       console.log(responseJson);

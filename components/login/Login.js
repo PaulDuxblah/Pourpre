@@ -10,7 +10,9 @@ import style from '../../style';
 export default class Login extends PourpreComponent {
   constructor(props) {
     super(props);
+    console.log('login constructor');
     this.state = {
+      ...this.state,
       goToRegister: this.props.goToRegister
     };
   }
@@ -27,12 +29,16 @@ export default class Login extends PourpreComponent {
     fetch(this.apiUrl + 'user/login/pseudo=' + pseudo + '/password=' + password)
     .then((response) => response.json())
     .then((responseJson) => {
+      if (typeof responseJson === 'string') {
+        return;
+      }
+
       try {
         console.log('success fetchLogin');
         AsyncStorage.setItem('user', JSON.stringify(responseJson))
         .then(() => {
           console.log('success AsyncStorage fetchLogin');
-          this.loadUser();
+          this.props.reloadApp();
         });
       } catch (error) {
         console.log('error');

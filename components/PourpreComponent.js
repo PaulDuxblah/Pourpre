@@ -8,7 +8,7 @@ export default class PourpreComponent extends Component {
     // AsyncStorage.clear();
     super(props);
     this.state = {
-      user: null
+      user: props.user
     };
     // console.log('this.fetchUser()');
     // console.log(this.fetchUser());
@@ -19,20 +19,13 @@ export default class PourpreComponent extends Component {
   }
 
   async loadUser () {
-    console.log('loadUser');
-    
     try {
-      console.log('try loadUser');
       AsyncStorage.getItem('user')
       .then((value) => {
-        console.log('loadUser success');
-        console.log(JSON.parse(value));
         this.setState({ 'user': JSON.parse(value) });
-        console.log(JSON.parse(value));
       });
     } catch (error) {
-      console.log('error');
-      console.log(error);
+
     }
   }
 
@@ -41,7 +34,7 @@ export default class PourpreComponent extends Component {
       console.log('logout');
       AsyncStorage.removeItem('user')
       .then(() => {
-        this.props.navigation.navigate('Login');
+        this.props.screenProps.reloadApp();
       });
     } catch (error) {
       console.log(error);

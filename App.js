@@ -1,6 +1,7 @@
 import React from 'react';
-import { StatusBar, View, StyleSheet, AsyncStorage } from 'react-native';
+import { StatusBar, View, StyleSheet, AsyncStorage, persistStore } from 'react-native';
 import { TabNavigator } from 'react-navigation';
+import { AppLoading } from 'expo';
 
 // COMPONENTS
 // Not logged
@@ -38,25 +39,31 @@ export default class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      user: null
+      user: null,
+      loadingCompleted: false
     };
-    this.loadUser();
   }
 
-  async loadUser () {
+  async loadUser() {
     try {
       AsyncStorage.getItem('user')
       .then((value) => {
         this.setState({ 'user': JSON.parse(value) });
+        this._handleFinishLoading();
       });
     } catch (error) {
       
     }
   }
 
+  reloadApp = () => {
+    this.setState({
+      loadingCompleted: false
+    });
+  }
+
   goToLogin = () => {
     this.setState({
-      ...this.state,
       register: false
     });
     this.forceUpdate();
@@ -64,33 +71,41 @@ export default class App extends React.Component {
 
   goToRegister = () => {
     this.setState({
-      ...this.state,
       register: true
     });
     this.forceUpdate();
   }
 
+  _handleFinishLoading = () => {
+    this.setState({ loadingCompleted: true });
+  };
+
   render() {
+    if (!this.state.loadingCompleted) {
+      this.loadUser();
+      return (
+        <AppLoading />
+      );
+    }
+
     if (this.state.user == null) {
-      console.log('no user');
       return (
         <View style= {{flex: 1}} >
           <StatusBar hidden={true} />
           {
             this.state.register ?
-            <Register goToLogin={this.goToLogin}/>
+            <Register goToLogin={this.goToLogin} user={this.state.user} reloadApp={this.reloadApp} />
             :
-            <Login goToRegister={this.goToRegister}/>
+            <Login goToRegister={this.goToRegister} user={this.state.user} reloadApp={this.reloadApp} />
           }
         </View>
       )
     }
-    console.log('user');
 
     return (
       <View style= {{flex: 1}} >
         <StatusBar hidden={true} />
-        <Tabs/>
+        <Tabs screenProps={{ user: this.state.user, reloadApp: this.reloadApp }}/>
       </View>
     )
   }

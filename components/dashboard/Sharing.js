@@ -10,7 +10,7 @@ export default class Sharing extends Component {
       <View style={style.sharingBlock}>
         <View style={[style.row, style.sharingSubBlock]}>
             <Image resizeMode="contain" source={require('../images/share_icon.png')} style= {{width:20}}/>
-            <Text style={style.sharingSubText}>{'Mobiliser votre entourage'.toUpperCase()}</Text>
+            <Text style={style.sharingSubText}>{'Mobilisez votre entourage'.toUpperCase()}</Text>
         </View>
         <View style={[style.row, style.sharingBtn]}>
             <Image resizeMode="contain" source={require('../images/facebook_btn.png')} style= {{width:150}}/>
