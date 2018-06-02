@@ -1,39 +1,16 @@
 import React from 'react';
-import { StatusBar, View, StyleSheet, AsyncStorage, persistStore } from 'react-native';
-import { TabNavigator } from 'react-navigation';
+import { 
+  StatusBar, 
+  View, 
+  StyleSheet,
+  AsyncStorage,
+  persistScore
+} from 'react-native';
 import { AppLoading } from 'expo';
+import LogIn from './src/screens/LogIn';
+import Register from './src/screens/Register';
 
-// COMPONENTS
-// Not logged
-import Login from './components/login/Login';
-import Register from './components/register/Register';
-
-// Logged
-import Dashboard from './components/dashboard/Dashboard';
-import Agenda from './components/agenda/Agenda';
-import Geolocalisation from './components/map/Geolocalisation';
-// import Notification from './components/notification/Notification';
-// import UserSearch from './components/usersearch/UserSearch';
-
-const Tabs = TabNavigator(
-  {
-    Dashboard: { screen: Dashboard },
-    Agenda: { screen: Agenda },
-    Geolocalisation: { screen: Geolocalisation },
-  },
-  {
-    tabBarPosition: 'bottom',
-    tabBarOptions: {
-      showIcon: true,
-      showLabel: false,
-      style:{
-        backgroundColor: "#350D36",
-        borderTopWidth: 1,
-        borderColor: "#3f101c"
-      }
-    },
-  }
-);
+import LoggedInContainer from './src/navigators/LoggedInTabNavigator';
 
 export default class App extends React.Component {
   constructor (props) {
@@ -96,7 +73,7 @@ export default class App extends React.Component {
             this.state.register ?
             <Register goToLogin={this.goToLogin} user={this.state.user} reloadApp={this.reloadApp} />
             :
-            <Login goToRegister={this.goToRegister} user={this.state.user} reloadApp={this.reloadApp} />
+            <LogIn goToRegister={this.goToRegister} user={this.state.user} reloadApp={this.reloadApp} />
           }
         </View>
       )
@@ -105,11 +82,11 @@ export default class App extends React.Component {
     return (
       <View style= {{flex: 1}} >
         <StatusBar hidden={true} />
-        <Tabs screenProps={{ user: this.state.user, reloadApp: this.reloadApp }}/>
+        <LoggedInContainer screenProps={{ user: this.state.user, reloadApp: this.reloadApp }} />
       </View>
-    )
+    );
   }
 }
 
-//Hide the warning info
+//Hide warning info
 console.disableYellowBox = true; 
