@@ -54,8 +54,6 @@ export default class Register extends ApiUser {
     )
     .then((response) => response.json())
     .then((responseJson) => {
-      console.log('register success');
-      console.log(responseJson);
       try {
         AsyncStorage.setItem('user', JSON.stringify(responseJson))
         .then(() => {
