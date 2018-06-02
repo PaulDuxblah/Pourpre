@@ -11,7 +11,7 @@ export default class App extends React.Component {
   render() {
     return (
     <View style= {{flex: 1}} >
-      {/* <StatusBar hidden={true} /> */}
+      <StatusBar hidden={true} />
       <LoggedInContainer/>
     </View>
     );

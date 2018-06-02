@@ -13,10 +13,6 @@ import IconAwesome from 'react-native-vector-icons/Ionicons';
 
 
 export default class TopBlock extends Component {
-  avatars = {
-    'batman': require('../../images/batman.png'),
-  };
-
   constructor (props) {
     super(props);
     this.state = {
