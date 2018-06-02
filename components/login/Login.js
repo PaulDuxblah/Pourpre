@@ -10,7 +10,6 @@ import style from '../../style';
 export default class Login extends PourpreComponent {
   constructor(props) {
     super(props);
-    console.log('login constructor');
     this.state = {
       ...this.state,
       goToRegister: this.props.goToRegister

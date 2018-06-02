@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, Button, ActivityIndicator } from 'react-native';
+import { Text, View, StyleSheet, Image, Button, ActivityIndicator, AsyncStorage } from 'react-native';
 import RegisterForm from './RegisterForm';
 import BackgroundOne from '../BackgroundOne';
 import PourpreComponent from '../PourpreComponent';
@@ -36,10 +36,8 @@ export default class Register extends PourpreComponent {
       return;
     }
 
-    console.log('ready to register');
-
     fetch(
-      this.apiUrl + 'user/', 
+      this.apiUrl + 'user',
       {
         method: 'POST',
         headers: {
@@ -50,25 +48,29 @@ export default class Register extends PourpreComponent {
           pseudo: pseudo,
           gender: gender,
           password: password
-        })  
+        }),
       }
     )
-    .then((response) =>{
-      console.log(response);
-      return response.json();
-    })
+    .then((response) => response.json())
     .then((responseJson) => {
       console.log('register success');
       console.log(responseJson);
       try {
         AsyncStorage.setItem('user', JSON.stringify(responseJson))
         .then(() => {
-          this.loadUser();
+          this.props.reloadApp();
         });
       } catch (error) {
         console.log(error);
       }
-    });
+    })
+    .catch((error) => {
+      if (error.message.includes('Duplicate')) {
+        this.setState({
+          errors: ['duplicate']
+        })
+      }
+    })
   }
 
   render() {

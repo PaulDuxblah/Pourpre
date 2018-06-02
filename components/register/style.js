@@ -1,5 +1,6 @@
 const white = '#ffffff'
 const black = '#000000'
+const red   = '#FF0000'
 
 export default {
   picker: {
@@ -15,5 +16,11 @@ export default {
     marginBottom: 10,
     padding: 10,
     color: black
+  },
+
+  error: {
+    color: red,
+    fontSize: 14,
+    marginBottom: 2
   },
 }

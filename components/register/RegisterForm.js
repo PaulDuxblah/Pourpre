@@ -27,12 +27,18 @@ class RegisterForm extends Component {
 
   render() {
     const { pseudo, gender, password, confirmPassword } = this.state;
-    console.log(pseudo, gender, password, confirmPassword);
+
+    let duplicateError;
+
+    if (this.props.errors && this.props.errors.includes('duplicate')) {
+      duplicateError = <Text style={registerStyle.error}>Ce pseudo existe déjà !</Text>;
+    }
 
     // TODO display errors
-    // TODO Do post user
     return (
       <View style={styles.container}>
+        {duplicateError}
+
         <TextInput style = {registerStyle.input} 
           autoCapitalize="none"  
           autoCorrect={false}
@@ -70,7 +76,7 @@ class RegisterForm extends Component {
 
         <Button 
           style= {styles.buttonTex} 
-          title="S'ENRGISTRER"
+          title="S'ENREGISTRER"
           onPress={this.submitForm} 
         />
       </View>
