@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Image, Button, ActivityIndicator, AsyncStorage } from 'react-native';
+import { 
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  Button,
+  ActivityIndicator,
+  AsyncStorage 
+} from 'react-native';
 
 import RegisterForm from '../components/RegisterForm';
 import BackgroundOne from '../components/background/BackgroundOne';
