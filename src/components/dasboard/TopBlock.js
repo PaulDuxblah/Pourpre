@@ -4,7 +4,8 @@ import {
 	View, 
 	Image, 
 	StyleSheet, 
-	TouchableOpacity
+	TouchableOpacity,
+  TouchableHighlight
 } from 'react-native';
 
 //STYLESHEET
@@ -29,6 +30,10 @@ export default class TopBlock extends Component {
     }
   }
 
+  logout = () => {
+    this.props.logout();
+  }
+
   render() {
     const { user } = this.state;
 
@@ -36,7 +41,10 @@ export default class TopBlock extends Component {
       	<View style={styles.container}>
      		<View style={styles.containerWrapper}>
 				<View style={styles.wrapper}>
-					<Image source={this.getAvatar(user.avatar)} style= {styles.imagesProfile}/>
+          <TouchableHighlight onPress={this.logout}>
+            <Image source={this.getAvatar(user.avatar)} style= {styles.imagesProfile}/>
+          </TouchableHighlight>
+
 					<View style={styles.infoBlock}>
 					<Text style={styles.titleUser}>{('BONJOUR ' + this.props.user.pseudo + '!').toUpperCase()}</Text>
 					<TouchableOpacity onPress={this._onPressButton}>

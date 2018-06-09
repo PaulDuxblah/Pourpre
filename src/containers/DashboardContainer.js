@@ -21,8 +21,6 @@ import TopBlock from '../components/dasboard/TopBlock';
 //STYLESHEET
 import colors from '../styles/colors';
 
-
-
 export default class Dashboard extends ApiUser {
   constructor(props) {
     super(props);
@@ -55,7 +53,7 @@ export default class Dashboard extends ApiUser {
 
     return (
       	<BackgroundDash>
-      	<TopBlock user={this.state.user}/>
+      	<TopBlock user={this.state.user} logout={this.logout} />
       	<View style={styles.containerWrapper}>
 		  	<View style={styles.wrapper}>
 			  <View style={styles.titleBlock}>

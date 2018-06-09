@@ -9,8 +9,11 @@ export default class ApiUser extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      user: null
+      user: props.user
     };
+  }
+
+  componentDidMount() {
     this.loadUser();
   }
 
@@ -21,7 +24,18 @@ export default class ApiUser extends Component {
         this.setState({ 'user': JSON.parse(value) });
       });
     } catch (error) {
-      
+
+    }
+  }
+
+  logout = () => {
+    try {
+      AsyncStorage.removeItem('user')
+      .then(() => {
+        this.props.screenProps.reloadApp();
+      });
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -36,13 +50,15 @@ export default class ApiUser extends Component {
     )
     .then((response) => response.json())
     .then((responseJson) => {
+      console.log('fetchUser success');
       try {
         AsyncStorage.setItem('user', JSON.stringify(responseJson))
         .then(() => {
           this.loadUser();
         });
       } catch (error) {
-        
+        console.log('fetchUser error');
+        console.log(error);
       }
     });
   }
