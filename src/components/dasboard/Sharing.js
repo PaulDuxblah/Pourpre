@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
 	sharingSubBlock: {
 		display: 'flex',
 		flexDirection: 'row',
-		marginBottom: 10
+		marginBottom: 10,
 	},
 	sharingSubText: {
 		marginLeft: 10,
@@ -74,7 +74,10 @@ const styles = StyleSheet.create({
 	sharingBtn:{
 		display: 'flex',
 		flexDirection: 'row',
-		justifyContent: 'space-between'
+		justifyContent: 'space-between',
+		backgroundColor: colors.purpledark,
+		paddingHorizontal: 5,
+		paddingVertical: 10
 	},
 	buttonShare:{
 		display: 'flex',

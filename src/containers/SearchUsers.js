@@ -16,6 +16,18 @@ import colors from '../styles/colors';
 
 
 export default class UserSearch extends Component {
+    static navigationOptions = {
+		tabBarLabel: 'RENCONTRE',
+		tabBarIcon: ({ tintColor }) => (
+			<Image 
+			resizeMode='contain' 
+			source={require('../images/rencontre_btn.png')} 
+			style={{width: 22, height: 22}}/>
+		),
+		headerStyle: { backgroundColor: colors.purpledark, borderBottomColor: colors.purpledark },
+		headerTitleStyle: { color: colors.white },
+	};
+
     constructor(props) {
         super(props);
         this.state = { text: 'Rechercher' };

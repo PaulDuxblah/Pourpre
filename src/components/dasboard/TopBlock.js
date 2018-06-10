@@ -24,7 +24,7 @@ export default class TopBlock extends Component {
   getAvatar = (avatar) => {
     switch (avatar) {
       case 'batman':
-        return require('../../images/batman.png');
+        return require('../../images/user_avatar.png');
       default:
         return require('../../images/user_profile_icon.png');
     }
@@ -33,10 +33,9 @@ export default class TopBlock extends Component {
   logout = () => {
     this.props.logout();
   }
-
   render() {
     const { user } = this.state;
-
+		const { openUserHistory } = this.props
     return (
       	<View style={styles.container}>
      		<View style={styles.containerWrapper}>
@@ -47,7 +46,7 @@ export default class TopBlock extends Component {
 
 					<View style={styles.infoBlock}>
 					<Text style={styles.titleUser}>{('BONJOUR ' + this.props.user.pseudo + '!').toUpperCase()}</Text>
-					<TouchableOpacity onPress={this._onPressButton}>
+					<TouchableOpacity onPress={openUserHistory}>
 						<View style={styles.buttonHistory}>
 							<IconAwesome
 							name='ios-folder-outline'
@@ -69,7 +68,7 @@ export default class TopBlock extends Component {
 
 const styles = StyleSheet.create({
   container: {
-	paddingTop: 50,
+	paddingTop: 10,
   },
   containerWrapper:{
 	marginLeft: 10,
