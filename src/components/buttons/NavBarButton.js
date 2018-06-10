@@ -15,7 +15,7 @@ export default class NavBarButton extends Component {
   	if (text) {
   	  content = <Text style={[{color}, marginPosition, styles.buttonText]}>{text}</Text>;
   	} else if (icon) {
-  	  content = <View style={[{marginPosition}, styles.btn]}>{icon}</View>;
+  	  content = <View style={[marginPosition, styles.btn]}>{icon}</View>;
   	}
     return (
       <TouchableOpacity onPress={handleButtonPress}>
