@@ -20,7 +20,7 @@ export default class UserProfile extends Component {
         <BackgroundGeneral>
             <View style={styles.profileWrapper}>
                 <View style={styles.userProfBlock}>
-                    <Image source={require('../images/user_profile_icon.png')} style={styles.imageProfil}/>
+                    <Image source={require('../images/avatar_default.png')} style={styles.imageProfil}/>
                     <View style={styles.profileSubDes}>
                         <Text style={styles.profileSubNam}>{'mikeal'.toUpperCase()}</Text>
                         <TouchableOpacity>

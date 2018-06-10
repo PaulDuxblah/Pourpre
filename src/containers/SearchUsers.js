@@ -57,7 +57,7 @@ export default class UserSearch extends Component {
                 <View style={styles.resultBlock}>
                     <View style={styles.userBlock}>
                         <TouchableOpacity activeOpacity = { .5 } onPress= {() => this.search()}>
-                        <Image source={require('../images/user_profile_icon.png')} style= {styles.imgUserProfile}/>
+                        <Image source={require('../images/avatar_default.png')} style= {styles.imgUserProfile}/>
                         </TouchableOpacity>
                         <Text style={styles.userTitle}>Tom24</Text>
                     </View>
