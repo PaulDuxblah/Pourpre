@@ -8,15 +8,6 @@ export default class CalendarView extends Component {
     this.state = {};
     this.onDayPress = this.onDayPress.bind(this);
   }
-
-    static navigationOptions = {
-        title: 'Agenda',
-       
-        tabBarIcon: () => {
-            return <Image source={require ('../images/agenda_btn.png')} style= {{width:20, height:20}} />
-        }
-    }
-
   render() {
     return (
       <ScrollView style={styles.container}>
@@ -80,6 +71,5 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: 'gray'
   }
 });

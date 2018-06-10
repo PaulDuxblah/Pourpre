@@ -17,9 +17,11 @@ import ReminderActivity from '../components/dasboard/ReminderActivity';
 import BadgeDisplay from '../components/dasboard/BadgeDisplay';
 import Sharing from '../components/dasboard/Sharing';
 import TopBlock from '../components/dasboard/TopBlock';
+import NavBarButton from '../components/buttons/NavBarButton';
 
 //STYLESHEET
 import colors from '../styles/colors';
+import IconAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default class Dashboard extends ApiUser {
   constructor(props) {
@@ -28,12 +30,25 @@ export default class Dashboard extends ApiUser {
 
   //ICON
   static navigationOptions = ({navigation}) =>({
-    header: null,
-    title: 'Dashboard',
-    tabBarIcon: () => {
-      return <Image source={require ('../images/home_btn.png')} style= {{width:20, height:20}} />
-    }
-  })
+		tabBarLabel: 'DASHBOARD',
+		headerRight: <NavBarButton
+      handleButtonPress={() => navigation.navigate('Notification')}
+			location="left"
+      icon={<IconAwesome name="bell-o" color={colors.white} size={23} />}
+    />,
+		headerLeft:	<Image 
+			resizeMode='contain' 
+			source={require('../images/pourpre_logo.png')} 
+			style={{width: 120, height: 120, marginLeft: 10}}/>,
+		tabBarIcon: () => (
+			<Image 
+			resizeMode='contain' 
+			source={require('../images/home_btn.png')} 
+			style={{width: 20, height: 20}}/>
+		),
+		headerStyle: { backgroundColor: colors.purpledark, borderBottomColor: colors.purpledark},
+	})
+	
 
   render() {
     const { user } = this.state;
@@ -49,11 +64,19 @@ export default class Dashboard extends ApiUser {
           meetingsToShow.push(meeting);
         }
       })
-    }
+		}
+		openUserBloodHistory = () => {
+			const { navigate } = this.props.navigation;
+			navigate('BloodHistory')
+		}
 
     return (
       	<BackgroundDash>
-      	<TopBlock user={this.state.user} logout={this.logout} />
+      	<TopBlock 
+				user={this.state.user} 
+				logout={this.logout} 
+				openUserHistory={this.openUserBloodHistory}
+				/>
       	<View style={styles.containerWrapper}>
 		  	<View style={styles.wrapper}>
 			  <View style={styles.titleBlock}>
