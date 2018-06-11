@@ -21,18 +21,14 @@ export default class TopBlock extends Component {
     }
   }
 
-  getAvatar = (avatar) => {
-    switch (avatar) {
-      case 'batman':
-        return require('../../images/avatar_batman.png');
-      default:
-        return require('../../images/avatar_default.png');
-    }
-  }
-
   logout = () => {
     this.props.logout();
   }
+
+  getAvatar = (avatar) => {
+    return this.props.getAvatar(avatar);
+  }
+
   render() {
     const { user } = this.state;
     const { openUserHistory } = this.props
