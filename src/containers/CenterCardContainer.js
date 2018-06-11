@@ -133,85 +133,85 @@ export default class CenterCardContainer extends Component {
 }
 
 const styles = StyleSheet.create({
-    wrapperHeader: {
-        flex: 1,
-    },
-    containerWrapper: {
-        flex: 1,
+  wrapperHeader: {
+    flex: 1,
+  },
+  containerWrapper: {
+    flex: 1,
     marginTop: 10,
     marginLeft: 10,
-        marginRight: 10,
-        marginBottom: 10,
+    marginRight: 10,
+    marginBottom: 10,
     borderColor: colors.pink,
     borderWidth: 2,
-    },
-    Wrapper: {
-        paddingRight: 20,
-        paddingLeft: 20
-    },
-    titleHeader:{
-        marginTop: 10,
-        fontSize: 20,
-        paddingBottom: 4,
-        fontWeight: '700',
-        color: colors.lightpink,
-    },
-    titleBlock: {
-        borderBottomColor: colors.lightpurple,
+  },
+  Wrapper: {
+    paddingRight: 20,
+    paddingLeft: 20
+  },
+  titleHeader:{
+    marginTop: 10,
+    fontSize: 20,
+    paddingBottom: 4,
+    fontWeight: '700',
+    color: colors.lightpink,
+  },
+  titleBlock: {
+    borderBottomColor: colors.lightpurple,
     borderBottomWidth: 2,
-    },
-    subHeader: {
-        color: colors.white,
-        fontSize: 18,
-        fontWeight: '500',
-        paddingBottom: 3
-    },
-    descriptionBlock: {
-        paddingTop: 10,
-        marginLeft: 5,
-        marginBottom: 10
-    },
-    desText:{
-        fontSize: 16,
-        fontWeight: '300',
-        color: colors.white,
-    },
-    wrap: {
-        flex: 1, 
-        flexWrap: "wrap"
-    },
-    bloodType:{
-        paddingLeft: 9
-    },
-    Row: {
-        display: 'flex',
-        flexDirection: 'row'
-    },
-    timeBlock:{
-        display: 'flex',
-        flexDirection: 'row'
-    },
-    icon: {
-        position: 'relative',
-        top: 3
-    },
-    titleSubSection:{
-        color: colors.white,
-        fontSize: 15,
-        fontWeight: '600',
-        paddingBottom: 5
-    },
-    programmerBtn:{
-        display: 'flex',
-        alignItems: 'flex-end'
-    },
-    programmerBtnRow: {
-        paddingRight: 10,
-        paddingBottom: 10,
-    },
-    programmerBtnText: {
-        color: colors.white,
-        fontSize: 15,
-        fontWeight: '600'
-    }
-  });
+  },
+  subHeader: {
+    color: colors.white,
+    fontSize: 18,
+    fontWeight: '500',
+    paddingBottom: 3
+  },
+  descriptionBlock: {
+    paddingTop: 10,
+    marginLeft: 5,
+    marginBottom: 10
+  },
+  desText:{
+    fontSize: 16,
+    fontWeight: '300',
+    color: colors.white,
+  },
+  wrap: {
+    flex: 1, 
+    flexWrap: "wrap"
+  },
+  bloodType:{
+    paddingLeft: 9
+  },
+  Row: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  timeBlock:{
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  icon: {
+    position: 'relative',
+    top: 3
+  },
+  titleSubSection:{
+    color: colors.white,
+    fontSize: 15,
+    fontWeight: '600',
+    paddingBottom: 5
+  },
+  programmerBtn:{
+    display: 'flex',
+    alignItems: 'flex-end'
+  },
+  programmerBtnRow: {
+    paddingRight: 10,
+    paddingBottom: 10,
+  },
+  programmerBtnText: {
+    color: colors.white,
+    fontSize: 15,
+    fontWeight: '600'
+  }
+});
