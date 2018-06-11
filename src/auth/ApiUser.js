@@ -17,6 +17,47 @@ export default class ApiUser extends Component {
     this.loadUser();
   }
 
+  getAvatar = (avatar) => {
+    switch (avatar) {
+      case 'batman':
+        return require('../images/avatar_batman.png');
+      default:
+        return require('../images/avatar_default.png');
+    }
+  }
+
+  fetchUsers = () => {
+    return fetch(
+      this.apiUrl + 'user', 
+      {
+        headers: {
+          token: this.state.user.token
+        }
+      }
+    )
+    .then((response) => response.json())
+    .then((responseJson) => {
+      return responseJson;
+    });
+  }
+
+  fetchUsersByPseudo = (pseudo) => {
+    return fetch(
+      this.apiUrl + 'user/pseudo/' + pseudo, 
+      {
+        headers: {
+          token: this.state.user.token
+        }
+      }
+    )
+    .then((response) => response.json())
+    .then((responseJson) => {
+      console.log('fetchUsersByPseudo success');
+      console.log(responseJson);
+      return responseJson;
+    });
+  }
+
   async loadUser () {
     try {
       AsyncStorage.getItem('user')
@@ -60,6 +101,35 @@ export default class ApiUser extends Component {
         console.log('fetchUser error');
         console.log(error);
       }
+    });
+  }
+
+  addMeeting = (date, position, description = '', escortId = 0) => {
+    fetch(
+      this.apiUrl + 'meeting',
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          token: this.state.user.token
+        },
+        body: JSON.stringify({
+          date: date,
+          longitude: position.longitude,
+          latitude: position.latitude,
+          description: description,
+          escort: escortId
+        })
+      }
+    )
+    .then((response) => response.json())
+    .then((responseJson) => {
+      return responseJson;
+    })
+    .catch((error) => {
+      console.log('error on meeting creation');
+      console.log(error);
     });
   }
 
