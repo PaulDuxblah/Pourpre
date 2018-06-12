@@ -53,7 +53,6 @@ export default class ApiUser extends Component {
     .then((response) => response.json())
     .then((responseJson) => {
       console.log('fetchUsersByPseudo success');
-      console.log(responseJson);
       return responseJson;
     });
   }

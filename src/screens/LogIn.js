@@ -33,7 +33,6 @@ export default class LogIn extends ApiUser {
 
   fetchLogin = (pseudo, password) => {
     console.log('fetchLogin');
-    console.log(this.apiUrl + 'user/login/pseudo=' + pseudo + '/password=' + password);
     fetch(this.apiUrl + 'user/login/pseudo=' + pseudo + '/password=' + password)
     .then((response) => response.json())
     .then((responseJson) => {
