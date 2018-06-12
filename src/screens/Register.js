@@ -6,12 +6,15 @@ import {
   Image,
   Button,
   ActivityIndicator,
-  AsyncStorage 
+  AsyncStorage,
+  KeyboardAvoidingView,
+  TouchableOpacity
 } from 'react-native';
 
 import RegisterForm from '../components/RegisterForm';
 import BackgroundOne from '../components/background/BackgroundOne';
 import ApiUser from '../auth/ApiUser';
+import colors from '../styles/colors';
 
 export default class Register extends ApiUser {
   constructor(props) {
@@ -87,20 +90,23 @@ export default class Register extends ApiUser {
 
     return (
       <BackgroundOne>
-        <View style={styles.loginContainer}>
-          <Image 
-            resizeMode="contain" 
-            style={styles.logo} 
-            source={require('../images/pourpre_logo.png')}
-          />
-             
-          <RegisterForm errors={this.state.errors} onRegisterClick={this.createUser} />
+          <View style={styles.loginContainer}>
+            <Image 
+              resizeMode="contain" 
+              style={styles.logo} 
+              source={require('../images/pourpre_logo.png')}
+            />
+              
+            <RegisterForm errors={this.state.errors} onRegisterClick={this.createUser} />
 
-          <Button 
+            <TouchableOpacity
             onPress={this.state.goToLogin}
-            title="J'ai déjà un compte"
-          />
-        </View>   
+            >
+              <View>
+                <Text style={styles.buttonaccount}>J'ai déjà un compte</Text>
+              </View>
+            </TouchableOpacity>
+          </View> 
       </BackgroundOne>
     )
   }
@@ -119,5 +125,9 @@ const styles = StyleSheet.create({
     logo:{
       height: 100,
       width: 200
+    },
+    buttonaccount:{
+      color: colors.white,
+      marginTop: 10
     }
 })

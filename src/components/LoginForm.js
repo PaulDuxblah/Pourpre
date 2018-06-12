@@ -7,8 +7,11 @@ import {
     StatusBar, 
     Alert, 
     Button, 
-    TextInput 
+    TextInput ,
+    KeyboardAvoidingView
 } from 'react-native';
+
+import colors from '../styles/colors';
 
 class LoginForm extends Component {
   constructor (props) {
@@ -34,6 +37,10 @@ class LoginForm extends Component {
     const { pseudo, password } = this.state;
 
     return (
+      <KeyboardAvoidingView
+        style={styles.wrapper}
+        behavior="padding"
+       >
       <View style={styles.container}>
         <TextInput 
           style={styles.input} 
@@ -52,17 +59,24 @@ class LoginForm extends Component {
           onChangeText={v => this.handleChange('password', v)}
           secureTextEntry
         />
-        <Button 
+        <TouchableOpacity
           onPress={this.submitForm} 
-          style={styles.buttonText}
-          title="SE CONNECTER"
-        />
+          style={styles.button}
+        >
+          <View>
+          <Text style={styles.buttonText}>SE CONNECTER</Text>
+          </View>
+        </TouchableOpacity>
       </View>
+      </KeyboardAvoidingView>
     )
   }
 }
 export default LoginForm
 const styles = StyleSheet.create({
+    wrapper: {
+      display: 'flex'
+    },
     container:{
         padding: 20
     },
@@ -78,9 +92,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#2980b6',
         paddingVertical: 15
     },
+    button:{
+        alignItems: 'center',
+        backgroundColor: colors.lightpurple,
+        paddingVertical: 10,
+        marginTop: 10,
+    },
     buttonText:{
-        color: '#fff',
-        textAlign: 'center',
-        fontWeight: '700'
+      color: colors.white,
+      fontWeight: '600',
+      fontSize: 16
     }
 })

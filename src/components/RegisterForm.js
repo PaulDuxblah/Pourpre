@@ -8,9 +8,11 @@ import {
     Alert, 
     Button, 
     TextInput,
-    Picker
+    Picker,
+    KeyboardAvoidingView,
+    ScrollView
 } from 'react-native';
-
+import colors from '../styles/colors';
 class RegisterForm extends Component {
   constructor(props) {
     super(props);
@@ -44,7 +46,11 @@ class RegisterForm extends Component {
 
     // TODO display errors
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView
+        style={styles.wrapper}
+        behavior="padding"
+      >
+      <View style={styles.scrollViewWrapper}>
         {duplicateError}
 
         <TextInput style = {styles.input} 
@@ -57,9 +63,10 @@ class RegisterForm extends Component {
 
         <Picker
           selectedValue={gender}
-          style={{ height: 50, width: 100 }}
+          style={{ width: 100 }}
           onValueChange={v => this.handleChange('gender', v)}
           style={[styles.picker]}
+          itemStyle={{height: 44}}
         >
           <Picker.Item label="Homme" value="Homme" />
           <Picker.Item label="Femme" value="Femme" />
@@ -82,11 +89,17 @@ class RegisterForm extends Component {
           onChangeText={v => this.handleChange('confirmPassword', v)}
         />
 
-        <Button 
-          title="S'ENREGISTRER"
-          onPress={this.submitForm} 
-        />
+        
+        <TouchableOpacity
+          onPress={this.submitForm}
+          style={styles.button}
+        >
+          <View>
+          <Text style={styles.buttonText}>S'ENREGISTRER</Text>
+          </View>
+        </TouchableOpacity>
       </View>
+      </KeyboardAvoidingView>
     )
   }
 }
@@ -94,25 +107,27 @@ class RegisterForm extends Component {
 export default RegisterForm;
 
 const styles = StyleSheet.create({
-    container: {
-      padding: 20
+    wrapper: {
+      display: 'flex'
+    },
+    scrollViewWrapper: {
+      marginTop: 10,
+      padding: 0,
     },
 
     picker: {
       backgroundColor: '#fff',
-      color: '#000',
       marginBottom: 10,
     },
 
     input: {
-        height: 40,
-        width: 240,
-        backgroundColor: '#fff',
-        marginBottom: 10,
-        padding: 10,
-        color: '#000'
+      height: 40,
+      width: 240,
+      backgroundColor: '#fff',
+      marginBottom: 10,
+      padding: 10,
+      color: '#000'
     },
-
     error: {
       color: '#f00',
       fontSize: 14,
@@ -120,13 +135,19 @@ const styles = StyleSheet.create({
     },
 
     buttonContainer: {
-        backgroundColor: '#2980b6',
-        paddingVertical: 15
+      backgroundColor: '#2980b6',
+      paddingVertical: 15
     },
 
-    buttonText: {
-        color: '#fff',
-        textAlign: 'center',
-        fontWeight: '700'
+    button:{
+      alignItems: 'center',
+      backgroundColor: colors.lightpurple,
+      paddingVertical: 10,
+      marginTop: 10,
+    },
+    buttonText:{
+      color: colors.white,
+      fontWeight: '600',
+      fontSize: 16
     }
 })

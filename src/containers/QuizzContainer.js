@@ -11,7 +11,8 @@ import colors from '../styles/colors';
 
 export default class QuizzContainer extends Component {
     static navigationOptions = {
-		tabBarLabel: 'QUIZZ',
+    tabBarLabel: 'QUIZZ',
+    title: 'QUIZZ',
 		tabBarIcon: ({ tintColor }) => (
 			<Image 
 			resizeMode='contain' 

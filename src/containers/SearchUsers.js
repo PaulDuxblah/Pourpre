@@ -20,6 +20,7 @@ import colors from '../styles/colors';
 export default class UserSearch extends ApiUser {
   static navigationOptions = {
     tabBarLabel: 'RENCONTRE',
+    title: 'RECONTRE',
     tabBarIcon: ({ tintColor }) => (
       <Image 
         resizeMode='contain' 
@@ -62,7 +63,7 @@ export default class UserSearch extends ApiUser {
     const users = this.state.users ? this.state.users : [];
     return (
       <BackgroundGeneral>
-        <View style={styles.wrapper}>
+        <View>
           <View style={styles.searchbar}>
             <TextInput
               underlineColorAndroid='transparent'
@@ -93,12 +94,9 @@ export default class UserSearch extends ApiUser {
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    marginTop: 30
-  },
   input: {
-    height: 50,
-    padding: 10
+    height: 40,
+    backgroundColor : "#FFFFFF"
   },
   searchbar:{
     backgroundColor: colors.lightgray01,
