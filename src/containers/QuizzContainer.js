@@ -9,6 +9,9 @@ import {
 //STYLESHEET
 import colors from '../styles/colors';
 
+//GENERAL COMPONENTS
+import BackgroundGeneral from '../components/background/BackgroundGeneral';
+
 export default class QuizzContainer extends Component {
     static navigationOptions = {
     tabBarLabel: 'QUIZZ',
@@ -25,9 +28,11 @@ export default class QuizzContainer extends Component {
 
   render() {
     return (
-      <View>
-        <Text> QuizzContainer </Text>
-      </View>
+      <BackgroundGeneral>
+        <View>
+          <Image resizeMode="contain" source={require('../images/quiz_screen.png')} style={{width: '100%', height: '100%', position: 'relative', bottom: 40}}/>
+        </View>
+      </BackgroundGeneral>
     )
   }
 }
