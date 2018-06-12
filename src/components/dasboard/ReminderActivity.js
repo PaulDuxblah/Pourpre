@@ -19,28 +19,32 @@ export default class ReminderActivity extends Component {
   }
 
   render() {
-	  const { borderTop } = this.props;
+	  const borderTop = this.props.borderTop;
+    const meetingDateT = this.props.meeting.date.substr(0, 10) + "T" + this.props.meeting.date.substr(11, 8);
+    const meetingDate = new Date(meetingDateT);
+    const monthNames = ["Jan.", "Fév.", "Mars", "Avr.", "Mai", "Juin", "Jui.", "Août", "Sep.", "Oct.", "Nov.", "Déc."];
+
     return (
       <View style={[{borderTopColor: borderTop },styles.wrapper]}>
         <View style={styles.dateReminder}>
-          <Text style={styles.datetimeReminder}>03</Text>
-          <Text style={styles.dateReminderMonth}>{'JAN'.toUpperCase()}</Text>
+          <Text style={styles.datetimeReminder}>{meetingDate.getUTCDate()}</Text>
+          <Text style={styles.dateReminderMonth}>{monthNames[meetingDate.getMonth()].toUpperCase()}</Text>
         </View>
         <View style={styles.detailsReminder}>
-          <Text style={styles.reminderText}>11:30 AM </Text>
+          <Text style={styles.reminderText}>{meetingDate.getHours()}:{meetingDate.getMinutes()}</Text>
           <Text style={[styles.reminderText, styles.reminderTextType]}>Don de sang </Text>
           <View style={styles.location}>
-		  	<IconEvil
-			name='location'
-			size={18}
-			color={colors.white}
-			/>
+    		  	<IconEvil
+        			name='location'
+        			size={18}
+        			color={colors.white}
+      			/>
             <Text 
-			style={styles.addressReminder}
-			numberOfLines={2}
-			>
-			EFS Ile de France à Paris 10ème
-			</Text>
+        			style={styles.addressReminder}
+        			numberOfLines={2}
+      			>
+      			 EFS Ile de France à Paris 10ème
+      			</Text>
           </View>
         </View>
       </View>
