@@ -6,12 +6,15 @@ import {
   View, 
   Image, 
   Animated,
-  Dimensions
+  Dimensions,
+  TouchableOpacity
 } from 'react-native';
 import { Calendar } from 'react-native-calendars';
-
+import colors from '../styles/colors';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
+import Icon from 'react-native-vector-icons/EvilIcons';
+
 
 export default class CalendarView extends Component {
   constructor(props) {
@@ -63,7 +66,18 @@ export default class CalendarView extends Component {
         ]}
       >
         <View style={styles.popupView}>
-          <Text onPress={this.hidePopup}>HIDE</Text>
+          <TouchableOpacity
+          onPress={this.hidePopup}
+          >
+          <Icon
+            name="close"
+            size={25}
+            color={colors.black}
+            style={styles.icon}
+          />
+          </TouchableOpacity>
+          <Image resizeMode="contain" source={require('../images/popup_screen.png')} style={{width: 300, height: 230}}/>
+
         </View>
       </Animated.View>
     );
@@ -140,8 +154,11 @@ const styles = StyleSheet.create({
   },
   popupView: {
     alignSelf: 'center',
-    height: 360,
+    height: 270,
     width: 300,
     backgroundColor: '#FFFFFF',
+  },
+  icon:{
+    padding: 3
   }
 });

@@ -30,7 +30,7 @@ export default class AgendaContainer extends ApiUser {
 			location="left"
       icon={<Image 
 			resizeMode='contain' 
-			source={require('../images/carte_pin.png')} 
+			source={require('../images/location_icon_pin.png')} 
 			style={{width: 40, height: 40, marginLeft: 10}}/>}
     />,
 		tabBarIcon: ({ tintColor }) => (
@@ -48,7 +48,22 @@ export default class AgendaContainer extends ApiUser {
 			<BackgroundGeneral>
 				<View style={{flex: 1}}>
 					<CalendarView />
+          <View style={styles.notifBlock}>
+            <Text style={styles.notifDate}>27</Text>
+            <View style={styles.notifSub}>
+              <Text style={styles.notifMonth}>Juin 2018</Text>
+              <Text style={styles.notifTitle}>Accompagnement</Text>
+            </View>
+          </View>
+          <View style={[styles.notifBlock,  styles.notifcolor]}>
+            <Text style={styles.notifDate}>18</Text>
+            <View style={styles.notifSub}>
+              <Text style={styles.notifMonth}>Juillet 2018</Text>
+              <Text style={styles.notifTitle}>Don de sang</Text>
+            </View>
+          </View>
 				</View>
+       
 			</BackgroundGeneral>
 		)
   }
@@ -67,5 +82,34 @@ const styles = StyleSheet.create({
     height: 15,
     flex:1,
     paddingTop: 30
-  }
+  },
+  notifBlock:{
+    backgroundColor: '#355C7C',
+    margin: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 13,
+    borderColor: '#169DC1',
+    borderLeftWidth: 6,
+    flexDirection: 'row'
+  },
+  notifDate:{
+    fontSize: 40,
+    color: '#169DC1',
+    fontWeight: 'bold'
+  },
+  notifSub:{
+    paddingHorizontal: 10,
+  },
+  notifMonth:{
+    color: '#C9C6CC',
+    fontSize: 20
+  },
+  notifTitle:{
+    color: '#fff',
+    fontSize: 17,
+    fontWeight: 'bold'
+  },
+  notifcolor:{
+    borderColor: colors.lightpink,
+  },
 });
