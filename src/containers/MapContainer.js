@@ -18,6 +18,10 @@ import MapView, { Marker, ProviderPropType } from 'react-native-maps';
 //STYLESHEET
 import colors from '../styles/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
+import IconAwesome from 'react-native-vector-icons/FontAwesome';
+
+//COMPONENTS
+import NavBarButton from '../components/buttons/NavBarButton';
 
 //DATA
 import { bloodCenters } from '../data/bloodCenters';
@@ -33,8 +37,13 @@ const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 export default class MapContainer extends Component {
-	static navigationOptions = {
-		tabBarLabel: 'MAP',
+	static navigationOptions = ({ navigation }) => ({
+		tabBarLabel: 'AGENDA',
+		headerLeft: <NavBarButton
+		handleButtonPress={() => navigation.goBack()}
+		location="left"
+		icon={<IconAwesome name="angle-left" color={colors.white} size={30} />}
+		/>,
 		title: 'CARTE',
 		tabBarIcon: ({ tintColor }) => (
 			<Image 
@@ -44,7 +53,7 @@ export default class MapContainer extends Component {
 		),
 		headerStyle: { backgroundColor: colors.purpledark },
 		headerTitleStyle: { color: colors.white },
-	};
+	});
 
 	constructor(props) {
 		super(props);

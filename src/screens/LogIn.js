@@ -7,12 +7,13 @@ import {
   Button, 
   ImageBackground, 
   ActivityIndicator, 
-  AsyncStorage 
+  AsyncStorage,
+  TouchableOpacity 
 } from 'react-native';
 import LoginForm from '../components/LoginForm';
 import BackgroundOne from '../components/background/BackgroundOne';
 import logo from '../images/pourpre_logo.png';
-
+import colors from '../styles/colors';
 import ApiUser from '../auth/ApiUser';
 
 export default class LogIn extends ApiUser {
@@ -69,10 +70,14 @@ export default class LogIn extends ApiUser {
           />
           <LoginForm onLoginClick={this.fetchLogin} />
 
-          <Button 
-            onPress={this.state.goToRegister}
-            title="Je n'ai pas de compte"
-          />
+          
+          <TouchableOpacity
+          onPress={this.state.goToRegister}
+          >
+            <View>
+              <Text style={styles.buttonaccount}>Je n'ai pas de compte</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </BackgroundOne>
     )
@@ -92,5 +97,9 @@ const styles = StyleSheet.create({
   logo:{
     height: 100,
     width: 200
+  },
+  buttonaccount:{
+    color: colors.white,
+    marginTop: 5
   }
 })

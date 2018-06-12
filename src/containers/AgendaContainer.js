@@ -24,6 +24,7 @@ import ApiUser from '../auth/ApiUser';
 export default class AgendaContainer extends ApiUser {
 	static navigationOptions = ({ navigation }) => ({
     tabBarLabel: 'AGENDA',
+    title: 'AGENDA',
 		headerRight: <NavBarButton
       handleButtonPress={() => navigation.navigate('Map')}
 			location="left"
