@@ -52,6 +52,8 @@ export default class Dashboard extends ApiUser {
 
   render() {
     const { user } = this.state;
+    const today = new Date();
+    const currentTime = today.getTime();
 
     if (!user) {
       return (<ActivityIndicator size="large" color="white" />);
@@ -60,10 +62,13 @@ export default class Dashboard extends ApiUser {
     const meetingsToShow = [];
     if (user.meetings && user.meetings.length > 0) {
       user.meetings.forEach(function(meeting, i) {
-        if (meeting.date.diff(today)) {
+        const meetingDateT = meeting.date.substr(0, 10) + "T" + meeting.date.substr(11, 8);
+        const meetingDate = new Date(meetingDateT);
+
+        if (meetingDate.getTime() > currentTime) {
           meetingsToShow.push(meeting);
         }
-      })
+      });
     }
     openUserBloodHistory = () => {
       const { navigate } = this.props.navigation;
@@ -88,12 +93,14 @@ export default class Dashboard extends ApiUser {
             <View style={styles.notificationReminder}>
               {meetingsToShow.length > 0 ?
                 <View>
-                {meetingsToShow.map((meeting) => {
-                  return 
-                  <ReminderActivity
-                  borderTop={colors.bluelight}
-                  meeting={meeting}
-                  />
+                {meetingsToShow.map((meeting, key) => {
+                  return (
+                    <ReminderActivity
+                      borderTop={colors.bluelight}
+                      meeting={meeting}
+                      key={key}
+                    />
+                  )
                 })}
                 </View>
                 :
