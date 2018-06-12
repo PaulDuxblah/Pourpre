@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import { 
-    Text, 
-    View, 
-    TouchableOpacity, 
-    StyleSheet, 
-    StatusBar, 
-    Alert, 
-    Button, 
-    TextInput,
-    Picker,
-    KeyboardAvoidingView,
-    ScrollView
+  Text, 
+  View, 
+  TouchableOpacity, 
+  StyleSheet, 
+  StatusBar, 
+  Alert, 
+  Button, 
+  TextInput,
+  Picker,
+  KeyboardAvoidingView,
+  ScrollView
 } from 'react-native';
+
 import colors from '../styles/colors';
+
 class RegisterForm extends Component {
   constructor(props) {
     super(props);
@@ -107,47 +109,47 @@ class RegisterForm extends Component {
 export default RegisterForm;
 
 const styles = StyleSheet.create({
-    wrapper: {
-      display: 'flex'
-    },
-    scrollViewWrapper: {
-      marginTop: 10,
-      padding: 0,
-    },
+  wrapper: {
+    display: 'flex'
+  },
+  scrollViewWrapper: {
+    marginTop: 10,
+    padding: 0,
+  },
 
-    picker: {
-      backgroundColor: '#fff',
-      marginBottom: 10,
-    },
+  picker: {
+    backgroundColor: '#fff',
+    marginBottom: 10,
+  },
 
-    input: {
-      height: 40,
-      width: 240,
-      backgroundColor: '#fff',
-      marginBottom: 10,
-      padding: 10,
-      color: '#000'
-    },
-    error: {
-      color: '#f00',
-      fontSize: 14,
-      marginBottom: 2
-    },
+  input: {
+    height: 40,
+    width: 240,
+    backgroundColor: '#fff',
+    marginBottom: 10,
+    padding: 10,
+    color: '#000'
+  },
+  error: {
+    color: '#f00',
+    fontSize: 14,
+    marginBottom: 2
+  },
 
-    buttonContainer: {
-      backgroundColor: '#2980b6',
-      paddingVertical: 15
-    },
+  buttonContainer: {
+    backgroundColor: '#2980b6',
+    paddingVertical: 15
+  },
 
-    button:{
-      alignItems: 'center',
-      backgroundColor: colors.lightpurple,
-      paddingVertical: 10,
-      marginTop: 10,
-    },
-    buttonText:{
-      color: colors.white,
-      fontWeight: '600',
-      fontSize: 16
-    }
+  button:{
+    alignItems: 'center',
+    backgroundColor: colors.lightpurple,
+    paddingVertical: 10,
+    marginTop: 10,
+  },
+  buttonText:{
+    color: colors.white,
+    fontWeight: '600',
+    fontSize: 16
+  }
 })

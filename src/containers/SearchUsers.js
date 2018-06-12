@@ -96,7 +96,8 @@ export default class UserSearch extends ApiUser {
 const styles = StyleSheet.create({
   input: {
     height: 40,
-    backgroundColor : "#FFFFFF"
+    padding: 10,
+    backgroundColor : "#FFFFFF",
   },
   searchbar:{
     backgroundColor: colors.lightgray01,
