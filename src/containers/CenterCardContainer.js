@@ -72,8 +72,8 @@ export default class CenterCardContainer extends Component {
                   <Text style={styles.titleSubSection}>Ouvertures:</Text>
                     {params.list.openingTime.map((openTime, i) => {
                       return(
-                        <View>
-                          <Text style={styles.desText} key={i.id}>{openTime}</Text>
+                        <View key={i}>
+                          <Text style={styles.desText}>{openTime}</Text>
                         </View>
                       )
                     })}
