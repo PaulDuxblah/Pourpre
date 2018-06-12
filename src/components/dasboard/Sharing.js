@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
   sharingBlockWrapper:{
     marginLeft: 10,
     marginRight: 10,
-    paddingVertical: 40
+    paddingBottom: 20,
+    paddingTop: 20
   },
   sharingSubBlock: {
     display: 'flex',
