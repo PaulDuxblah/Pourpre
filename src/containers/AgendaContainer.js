@@ -19,8 +19,9 @@ import BackgroundGeneral from '../components/background/BackgroundGeneral';
 //COMPONENTS
 import CalendarView from '../components/Calendar';
 import NavBarButton from '../components/buttons/NavBarButton';
+import ApiUser from '../auth/ApiUser';
 
-export default class AgendaContainer extends Component {
+export default class AgendaContainer extends ApiUser {
 	static navigationOptions = ({ navigation }) => ({
     tabBarLabel: 'AGENDA',
 		headerRight: <NavBarButton
@@ -40,15 +41,14 @@ export default class AgendaContainer extends Component {
 		headerStyle: { backgroundColor: colors.purpledark },
 		headerTitleStyle: { color: colors.white },
 	});
-  	render() {
+
+  render() {
 		return (
 			<BackgroundGeneral>
 				<View style={{flex: 1}}>
-					<CalendarView
-					/>
+					<CalendarView />
 				</View>
 			</BackgroundGeneral>
-			
 		)
   }
 }
